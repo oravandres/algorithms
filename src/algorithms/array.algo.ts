@@ -106,8 +106,16 @@ export class ArrayAlgorithm extends BaseAlgorithm {
         return arr.concat(...arrays);
     }
 
-    public slice(): void {
-
+    /**
+     * Returns a shallow copy of a portion of an array.
+     *
+     * @param arr - The array to be sliced.
+     * @param start - The beginning index, inclusive.
+     * @param end - The end index, exclusive.
+     * @returns A new array that is a shallow copy of the specified portion of the original array.
+     */
+    public slice<T>(arr: Array<T>, start: number, end: number): Array<T> {
+        return arr.slice(start, end);
     }
 
     public indexOf(): void {

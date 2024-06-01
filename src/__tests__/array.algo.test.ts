@@ -107,5 +107,15 @@ describe('Array algorithms', () => {
 
             expect(arrayAlgorithm.concat(earlyYears, midYears, futureYears)).toEqual(allYearsCombined);
         });
+
+        test('slice', () => {
+            const start = 1; // inclusive
+            const end = 3; // exclusive
+
+            const games = ['Fallout', 'Diablo', 'Star Craft', 'Tetris', 'Quake'];
+            const expectedGames = ['Diablo', 'Star Craft'];
+
+            expect(arrayAlgorithm.slice(games, start, end)).toEqual(expectedGames);
+        });
     });
 });

@@ -32,4 +32,12 @@ describe('Array algorithms', () => {
         expect(newCars).toEqual(expectedCars);
         expect(removedCar).toEqual(car);
     });
+
+    test('unshift', () => {
+        const movie = 'Pitch Black';
+        const movies = ['Riddick', 'The Chronicles of Riddick'];
+        const expectedMovies = [movie, ...movies];
+
+        expect(arrayAlgorithm.unshift(movies, movie)).toEqual(expectedMovies);
+    });
 });

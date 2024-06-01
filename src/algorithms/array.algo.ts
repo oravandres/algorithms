@@ -41,8 +41,16 @@ export class ArrayAlgorithm extends BaseAlgorithm {
         return [arr, removed];
     }
 
-    public unshift(): void {
-
+    /**
+     * Adds one or more elements to the beginning of an array and returns the modified array.
+     *
+     * @param arr - The array to which the element will be added.
+     * @param elem - The element to be added to the beginning of the array.
+     * @returns The array with the new element added to the beginning.
+     */
+    public unshift<T>(arr: Array<T>, elem: T): Array<T> {
+        arr.unshift(elem);
+        return arr;
     }
 
     public splice(): void {

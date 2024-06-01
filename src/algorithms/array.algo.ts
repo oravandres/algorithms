@@ -30,8 +30,15 @@ export class ArrayAlgorithm extends BaseAlgorithm {
         return [arr, removed];
     }
 
-    public shift(): void {
-
+    /**
+     * Removes the first element from an array and returns the modified array and the removed element.
+     *
+     * @param arr - The array from which the first element will be removed.
+     * @returns A tuple where the first element is the modified array and the second element is the removed element.
+     */
+    public shift<T>(arr: Array<T>): [Array<T>, T | undefined] {
+        const removed = arr.shift();
+        return [arr, removed];
     }
 
     public unshift(): void {

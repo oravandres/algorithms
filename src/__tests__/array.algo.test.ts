@@ -21,4 +21,15 @@ describe('Array algorithms', () => {
         expect(newTodos).toEqual(expectedTodos);
         expect(removedTodo).toEqual(todo);
     });
+
+    test('shift', () => {
+        const car = 'bmw';
+        const cars = [car, 'tesla', 'kia'];
+        const expectedCars = cars.slice(1);
+
+        const [newCars, removedCar] = arrayAlgorithm.shift(cars);
+
+        expect(newCars).toEqual(expectedCars);
+        expect(removedCar).toEqual(car);
+    });
 });

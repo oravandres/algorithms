@@ -40,4 +40,25 @@ describe('Array algorithms', () => {
 
         expect(arrayAlgorithm.unshift(movies, movie)).toEqual(expectedMovies);
     });
+
+    describe('splice', () => {
+        const months = ['January', 'February', 'March', 'April'];
+
+        test('adds', () => {
+            const december = 'December';
+            const expectedMonths = [december, ...months];
+            expect(arrayAlgorithm.splice([...months], 0, 0, december)).toEqual(expectedMonths);
+        });
+
+        test('removes', () => {
+            const may = 'May';
+            expect(arrayAlgorithm.splice([...months, may], months.length, 1)).toEqual(months);
+        });
+
+        test('replaces', () => {
+            const june = 'June';
+            const expectedMonths = [...months.slice(0, -1), june];
+            expect(arrayAlgorithm.splice([...months], months.length - 1, 1, june)).toEqual(expectedMonths);
+        });
+    });
 });

@@ -53,8 +53,18 @@ export class ArrayAlgorithm extends BaseAlgorithm {
         return arr;
     }
 
-    public splice(): void {
-
+    /**
+     * Changes the contents of an array by removing, replacing, or adding new elements at a specific index.
+     *
+     * @param arr - The array to be modified.
+     * @param start - The index at which to start changing the array.
+     * @param deleteCount - The number of elements in the array to remove from start.
+     * @param items - The elements to add to the array, beginning from start. If you don't specify any elements, splice() will only remove elements from the array.
+     * @returns The array with the new elements added, replaced, or removed.
+     */
+    public splice<T>(arr: Array<T>, start: number, deleteCount: number, ...items: T[]): Array<T> {
+        arr.splice(start, deleteCount, ...items);
+        return arr;
     }
 
     public reverse(): void {

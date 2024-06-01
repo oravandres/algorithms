@@ -92,4 +92,20 @@ describe('Array algorithms', () => {
             });
         });
     });
+
+    /**
+     * Accessor Methods
+     *
+     * Accessor methods do not modify the original array but return some derived or specific value based on the array's content.
+     */
+    describe('Accessor Methods', () => {
+        test('concat', () => {
+            const earlyYears = [2001, 2002, 2003, 2004];
+            const midYears = [2021, 2022, 2023, 2024];
+            const futureYears = [2045, 2046, 2047];
+            const allYearsCombined = [...earlyYears, ...midYears, ...futureYears]
+
+            expect(arrayAlgorithm.concat(earlyYears, midYears, futureYears)).toEqual(allYearsCombined);
+        });
+    });
 });

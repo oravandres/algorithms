@@ -94,8 +94,16 @@ export class ArrayAlgorithm extends BaseAlgorithm {
      *
      * Accessor methods do not modify the original array but return some derived or specific value based on the array's content.
      */
-    public concat(): void {
 
+    /**
+     * Merges two or more arrays into a new array.
+     *
+     * @param arr - The initial array.
+     * @param arrays - Additional arrays to be merged.
+     * @returns A new array that contains all elements from the initial array and the additional arrays.
+     */
+    public concat<T>(arr: Array<T>, ...arrays: Array<Array<T>>): Array<T> {
+        return arr.concat(...arrays);
     }
 
     public slice(): void {

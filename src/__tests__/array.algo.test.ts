@@ -11,6 +11,14 @@ describe('Array algorithms', () => {
         expect(arrayAlgorithm.push(books, newBook)).toEqual(expectedBooks);
     });
 
-        expect(arrayAlgorithm.push(books, 'Inner Engineering')).toEqual(['The Power of Now', 'Meditations', 'Inner Engineering']);
-    })
-})
+    test('pop', () => {
+        const todo = 'do laundry';
+        const todos = ['buy milk', 'clean house', todo];
+        const expectedTodos = todos.slice(0, -1);
+
+        const [newTodos, removedTodo] = arrayAlgorithm.pop(todos);
+
+        expect(newTodos).toEqual(expectedTodos);
+        expect(removedTodo).toEqual(todo);
+    });
+});

@@ -19,8 +19,15 @@ export class ArrayAlgorithm extends BaseAlgorithm {
         return arr;
     }
 
-    public pop(): void {
-
+    /**
+     * Removes the last element from an array and returns the modified array and the removed element.
+     *
+     * @param arr - The array from which the last element will be removed.
+     * @returns A tuple where the first element is the modified array and the second element is the removed element.
+     */
+    public pop<T>(arr: Array<T>): [Array<T>, T | undefined] {
+        const removed = arr.pop();
+        return [arr, removed];
     }
 
     public shift(): void {

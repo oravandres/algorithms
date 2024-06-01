@@ -23,8 +23,8 @@ describe('Array algorithms', () => {
     });
 
     test('shift', () => {
-        const car = 'bmw';
-        const cars = [car, 'tesla', 'kia'];
+        const car = 'BMW';
+        const cars = [car, 'Tesla', 'KIA'];
         const expectedCars = cars.slice(1);
 
         const [newCars, removedCar] = arrayAlgorithm.shift(cars);

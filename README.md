@@ -39,6 +39,14 @@ The following array sorting algorithms are implemented in this project:
 - Counting Sort
 - Cubesort
 
+## Displaying Algorithms
+
+Each algorithm and data structure operation in this project has a corresponding method. You can display these methods and check if they have corresponding tests using the following command:
+
+```bash
+npm run dev
+```
+
 ## Running the tests
 
 Each algorithm and data structure operation has a corresponding test file. You can run the tests using the following command:

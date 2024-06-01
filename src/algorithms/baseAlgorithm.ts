@@ -23,7 +23,7 @@ export abstract class BaseAlgorithm {
         }
 
         const testFileContent = fs.readFileSync(testFilePath, 'utf-8');
-        const methodRegex = new RegExp(`test\\(['"\`]${method}['"\`],`);
+        const methodRegex = new RegExp(`(test|describe)\\(['"\`]${method}['"\`],`);
         return methodRegex.test(testFileContent);
     }
 }

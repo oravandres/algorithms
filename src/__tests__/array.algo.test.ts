@@ -60,4 +60,11 @@ describe('Array algorithms', () => {
             expect(arrayAlgorithm.splice([...months], months.length - 1, 1, june)).toEqual(expectedMonths);
         });
     });
+
+    test('reverse', () => {
+        const days = ['Monday', 'Tuesday', 'Wednesday'];
+        const expectedDays = days.slice().reverse();
+
+        expect(arrayAlgorithm.reverse(days)).toEqual(expectedDays);
+    });
 });

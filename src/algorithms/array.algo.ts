@@ -67,8 +67,15 @@ export class ArrayAlgorithm extends BaseAlgorithm {
         return arr;
     }
 
-    public reverse(): void {
-
+    /**
+     * Reverses the array in place
+     *
+     * @param arr - The array to be reversed.
+     * @returns The reversed array.
+     */
+    public reverse<T>(arr: Array<T>): Array<T> {
+        arr.reverse();
+        return arr;
     }
 
     public sort(): void {

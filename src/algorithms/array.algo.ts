@@ -6,6 +6,14 @@ export class ArrayAlgorithm extends BaseAlgorithm {
      *
      * Mutator methods modify the array in place, altering its contents directly.
      */
+
+    /**
+     * Adds one or more elements to the end of an array
+     *
+     * @param arr - The array to which the element will be added.
+     * @param elem - The element to be added to the array.
+     * @returns The array with the new element added to the end.
+     */
     public push<T>(arr: Array<T>, elem: T): Array<T> {
         arr.push(elem);
         return arr;

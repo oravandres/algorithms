@@ -78,8 +78,15 @@ export class ArrayAlgorithm extends BaseAlgorithm {
         return arr;
     }
 
-    public sort(): void {
-
+    /**
+     * Sorts the elements of an array in place
+     *
+     * @param arr - The array to be sorted.
+     * @returns The sorted array.
+     */
+    public sort<T>(arr: Array<T>): Array<T> {
+        arr.sort();
+        return arr;
     }
 
     /**

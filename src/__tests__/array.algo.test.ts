@@ -1,7 +1,9 @@
 import { ArrayAlgorithm } from '../algorithms/array.algo';
+import { Utils } from '../utils';
 
 describe('Array algorithms', () => {
     const arrayAlgorithm = new ArrayAlgorithm();
+    const utils = new Utils();
 
     test('push', () => {
         const books = ['The Power of Now', 'Meditations'];
@@ -66,5 +68,21 @@ describe('Array algorithms', () => {
         const expectedDays = days.slice().reverse();
 
         expect(arrayAlgorithm.reverse(days)).toEqual(expectedDays);
+    });
+
+    describe('sort', () => {
+        test('names', () => {
+            const sortedNames = ['Anny', 'Beth', 'Chris', 'Dan', 'Ed'];
+            const shuffledNames = utils.shuffle(sortedNames);
+
+            expect(arrayAlgorithm.sort(shuffledNames)).toEqual(sortedNames);
+        });
+
+        test('numbers', () => {
+            const sortedNumbers = [1, 2, 2000, 3, 30, 31, 351];
+            const shuffledNumbers = utils.shuffle(sortedNumbers);
+
+            expect(arrayAlgorithm.sort(shuffledNumbers)).toEqual(sortedNumbers);
+        });
     });
 });

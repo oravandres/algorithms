@@ -205,5 +205,12 @@ describe('Array algorithms', () => {
 
             expect(arrayAlgorithm.join(numbers, separator)).toEqual(joinedNumbers);
         });
+
+        test('toString', () => {
+            const lettersAndNumbers = [1, 'a', 2, 'b', 3];
+            const expectedString = '1,a,2,b,3';
+
+            expect(arrayAlgorithm.toString(lettersAndNumbers)).toEqual(expectedString);
+        });
     });
 });

@@ -174,7 +174,15 @@ export class ArrayAlgorithm extends BaseAlgorithm {
         return arr.join(separator);
     }
 
-    public toString(): void {}
+    /**
+     * Converts an array to a string.
+     *
+     * @param arr - The array to be converted to a string.
+     * @returns A string representation of the array. The array elements are converted to strings and concatenated with a comma (',') separator.
+     */
+    public toString<T>(arr: Array<T>): string {
+        return arr.toString();
+    }
 
     /**
      * Iteration Methods

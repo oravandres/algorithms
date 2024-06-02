@@ -62,12 +62,7 @@ export class ArrayAlgorithm extends BaseAlgorithm {
      * @param items - The elements to add to the array, beginning from start. If you don't specify any elements, splice() will only remove elements from the array.
      * @returns The array with the new elements added, replaced, or removed.
      */
-    public splice<T>(
-        arr: Array<T>,
-        start: number,
-        deleteCount: number,
-        ...items: T[]
-    ): Array<T> {
+    public splice<T>(arr: Array<T>, start: number, deleteCount: number, ...items: T[]): Array<T> {
         arr.splice(start, deleteCount, ...items);
         return arr;
     }
@@ -156,7 +151,17 @@ export class ArrayAlgorithm extends BaseAlgorithm {
         return arr.lastIndexOf(elem, start);
     }
 
-    public includes(): void {}
+    /**
+     * Determines whether an array includes a certain value, returning true or false as appropriate.
+     *
+     * @param arr - The array to search within.
+     * @param elem - The value to search for.
+     * @param start - The position in this array at which to begin searching for `elem`. If not provided, the search starts from the beginning of the array.
+     * @returns A boolean indicating whether the given value exists in the array.
+     */
+    public includes<T>(arr: Array<T>, elem: T, start?: number): boolean {
+        return arr.includes(elem, start);
+    }
 
     public join(): void {}
 

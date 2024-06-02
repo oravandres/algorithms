@@ -44,41 +44,36 @@ describe('Array algorithms', () => {
             const movies = ['Riddick', 'The Chronicles of Riddick'];
             const expectedMovies = [movie, ...movies];
 
-            expect(arrayAlgorithm.unshift(movies, movie)).toEqual(
-                expectedMovies,
-            );
+            expect(arrayAlgorithm.unshift(movies, movie)).toEqual(expectedMovies);
         });
 
         describe('splice', () => {
             const months = ['January', 'February', 'March', 'April'];
 
             test('adds', () => {
-                const december = 'December';
-                const expectedMonths = [december, ...months];
+                const month = 'December';
+                const expectedMonths = [month, ...months];
+                const start = 0;
+                const deleteCount = 0;
 
-                expect(
-                    arrayAlgorithm.splice([...months], 0, 0, december),
-                ).toEqual(expectedMonths);
+                expect(arrayAlgorithm.splice([...months], start, deleteCount, month)).toEqual(expectedMonths);
             });
 
             test('removes', () => {
-                expect(
-                    arrayAlgorithm.splice([...months, 'May'], months.length, 1),
-                ).toEqual(months);
+                const month = 'May';
+                const start = months.length;
+                const deleteCount = 1;
+
+                expect(arrayAlgorithm.splice([...months, month], start, deleteCount)).toEqual(months);
             });
 
             test('replaces', () => {
-                const june = 'June';
-                const expectedMonths = [...months.slice(0, -1), june];
+                const month = 'June';
+                const start = months.length - 1;
+                const deleteCount = 1;
+                const expectedMonths = [...months.slice(0, -1), month];
 
-                expect(
-                    arrayAlgorithm.splice(
-                        [...months],
-                        months.length - 1,
-                        1,
-                        june,
-                    ),
-                ).toEqual(expectedMonths);
+                expect(arrayAlgorithm.splice([...months], start, deleteCount, month)).toEqual(expectedMonths);
             });
         });
 
@@ -101,9 +96,7 @@ describe('Array algorithms', () => {
                 const sortedNumbers = [1, 2, 2000, 3, 30, 31, 351];
                 const shuffledNumbers = utils.shuffle(sortedNumbers);
 
-                expect(arrayAlgorithm.sort(shuffledNumbers)).toEqual(
-                    sortedNumbers,
-                );
+                expect(arrayAlgorithm.sort(shuffledNumbers)).toEqual(sortedNumbers);
             });
         });
     });
@@ -118,33 +111,18 @@ describe('Array algorithms', () => {
             const earlyYears = [2001, 2002, 2003, 2004];
             const midYears = [2021, 2022, 2023, 2024];
             const futureYears = [2045, 2046, 2047];
-            const allYearsCombined = [
-                ...earlyYears,
-                ...midYears,
-                ...futureYears,
-            ];
+            const allYearsCombined = [...earlyYears, ...midYears, ...futureYears];
 
-            expect(
-                arrayAlgorithm.concat(earlyYears, midYears, futureYears),
-            ).toEqual(allYearsCombined);
+            expect(arrayAlgorithm.concat(earlyYears, midYears, futureYears)).toEqual(allYearsCombined);
         });
 
         test('slice', () => {
             const start = 1; // inclusive
             const end = 3; // exclusive
-
-            const games = [
-                'Fallout',
-                'Diablo',
-                'Star Craft',
-                'Tetris',
-                'Quake',
-            ];
+            const games = ['Fallout', 'Diablo', 'Star Craft', 'Tetris', 'Quake'];
             const expectedGames = ['Diablo', 'Star Craft'];
 
-            expect(arrayAlgorithm.slice(games, start, end)).toEqual(
-                expectedGames,
-            );
+            expect(arrayAlgorithm.slice(games, start, end)).toEqual(expectedGames);
         });
 
         describe('indexOf', () => {
@@ -154,9 +132,7 @@ describe('Array algorithms', () => {
                 const word = 'Sunshine';
                 const expectedIndex = 0;
 
-                expect(arrayAlgorithm.indexOf(words, word)).toEqual(
-                    expectedIndex,
-                );
+                expect(arrayAlgorithm.indexOf(words, word)).toEqual(expectedIndex);
             });
 
             test('second occurrence', () => {
@@ -164,36 +140,25 @@ describe('Array algorithms', () => {
                 const start = 1;
                 const expectedIndex = 2;
 
-                expect(arrayAlgorithm.indexOf(words, word, start)).toEqual(
-                    expectedIndex,
-                );
+                expect(arrayAlgorithm.indexOf(words, word, start)).toEqual(expectedIndex);
             });
 
             test('not found', () => {
                 const word = 'Snow';
                 const expectedIndex = -1;
 
-                expect(arrayAlgorithm.indexOf(words, word)).toEqual(
-                    expectedIndex,
-                );
+                expect(arrayAlgorithm.indexOf(words, word)).toEqual(expectedIndex);
             });
         });
 
         describe('lastIndexOf', () => {
-            const books = [
-                'Security Analysis',
-                'The Intelligent Investor',
-                'One Up on Wall Street',
-                'Security Analysis',
-            ];
+            const books = ['Security Analysis', 'The Intelligent Investor', 'One Up on Wall Street', 'Security Analysis'];
 
             test('last occurrence', () => {
                 const book = 'Security Analysis';
                 const expectedIndex = 3;
 
-                expect(arrayAlgorithm.lastIndexOf(books, book)).toEqual(
-                    expectedIndex,
-                );
+                expect(arrayAlgorithm.lastIndexOf(books, book)).toEqual(expectedIndex);
             });
 
             test('second occurrence', () => {
@@ -201,18 +166,35 @@ describe('Array algorithms', () => {
                 const start = 1;
                 const expectedIndex = 0;
 
-                expect(arrayAlgorithm.lastIndexOf(books, book, start)).toEqual(
-                    expectedIndex,
-                );
+                expect(arrayAlgorithm.lastIndexOf(books, book, start)).toEqual(expectedIndex);
             });
 
             test('not found', () => {
                 const book = 'Trading for a Living';
                 const expectedIndex = -1;
 
-                expect(arrayAlgorithm.lastIndexOf(books, book)).toEqual(
-                    expectedIndex,
-                );
+                expect(arrayAlgorithm.lastIndexOf(books, book)).toEqual(expectedIndex);
+            });
+        });
+
+        describe('includes method', () => {
+            const months = ['January', 'May', 'September', 'January', 'March'];
+
+            test('returns true', () => {
+                const month = 'May';
+                expect(arrayAlgorithm.includes(months, month)).toEqual(true);
+            });
+
+            test('returns false', () => {
+                const month = 'August';
+                expect(arrayAlgorithm.includes(months, month)).toEqual(false);
+            });
+
+            test('returns true with specified start index', () => {
+                const month = 'January';
+                const start = 1;
+
+                expect(arrayAlgorithm.includes(months, month, start)).toEqual(true);
             });
         });
     });

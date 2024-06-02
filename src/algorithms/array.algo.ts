@@ -163,7 +163,16 @@ export class ArrayAlgorithm extends BaseAlgorithm {
         return arr.includes(elem, start);
     }
 
-    public join(): void {}
+    /**
+     * Joins all elements of an array into a string.
+     *
+     * @param arr - The array whose elements will be joined.
+     * @param separator - The string used to separate each element of the array.
+     * @returns A string representing the elements of the array separated by the specified separator.
+     */
+    public join<T>(arr: Array<T>, separator: string): string {
+        return arr.join(separator);
+    }
 
     public toString(): void {}
 

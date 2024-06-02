@@ -197,5 +197,13 @@ describe('Array algorithms', () => {
                 expect(arrayAlgorithm.includes(months, month, start)).toEqual(true);
             });
         });
+
+        test('join', () => {
+            const numbers = [1, 2, 3, 4, 5];
+            const separator = ', ';
+            const joinedNumbers = numbers.join(separator);
+
+            expect(arrayAlgorithm.join(numbers, separator)).toEqual(joinedNumbers);
+        });
     });
 });

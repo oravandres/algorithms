@@ -201,7 +201,7 @@ describe('Array algorithms', () => {
         test('join', () => {
             const numbers = [1, 2, 3, 4, 5];
             const separator = ', ';
-            const joinedNumbers = numbers.join(separator);
+            const joinedNumbers = '1, 2, 3, 4, 5';
 
             expect(arrayAlgorithm.join(numbers, separator)).toEqual(joinedNumbers);
         });

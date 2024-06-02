@@ -125,6 +125,7 @@ export class ArrayAlgorithm extends BaseAlgorithm {
 
   /**
    * Returns the first index at which a given element can be found in the array.
+   *
    * @param arr - The array in which to search for the element.
    * @param elem - The element to search for.
    * @param start - The index to start the search from. If not provided, the search starts from the beginning of the array.

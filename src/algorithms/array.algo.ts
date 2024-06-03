@@ -207,7 +207,21 @@ export class ArrayAlgorithm extends BaseAlgorithm {
         arr.forEach(callback);
     }
 
-    public map(): void {}
+    /**
+     * Creates a new array with the results of calling a provided function on every element in the array.
+     *
+     * @param arr - The array of type `T` to be mapped over.
+     * @param callback - A function that is executed for each element in the array.
+     *                   This function takes three parameters:
+     *                   1. The current element being processed in the array.
+     *                   2. The index of the current element being processed.
+     *                   3. The original array `arr`.
+     *                   The function should return a new element of type `T` that will be included in the new array.
+     * @returns A new array of type `T` that contains the results of applying the callback function to each element in the original array.
+     */
+    public map<T>(arr: Array<T>, callback: (value: T, index: number, arr: T[]) => T): Array<T> {
+        return arr.map(callback);
+    }
 
     public filter(): void {}
 

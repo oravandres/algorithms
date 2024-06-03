@@ -177,7 +177,7 @@ describe('Array algorithms', () => {
             });
         });
 
-        describe('includes method', () => {
+        describe('includes', () => {
             const months = ['January', 'May', 'September', 'January', 'March'];
 
             test('returns true', () => {
@@ -211,6 +211,37 @@ describe('Array algorithms', () => {
             const expectedString = '1,a,2,b,3';
 
             expect(arrayAlgorithm.toString(lettersAndNumbers)).toEqual(expectedString);
+        });
+    });
+
+    /**
+     * Iteration Methods
+     *
+     * Iteration methods process each element of an array in some manner, usually returning a new value or array based on the original array.
+     */
+    describe('Iteration Methods', () => {
+        test('forEach', () => {
+            type Smartphone = {
+                brand: string;
+                model: string;
+                os: string;
+            };
+            const phones: Smartphone[] = [
+                { brand: 'Apple', model: 'iPhone 13', os: 'iOS' },
+                { brand: 'Samsung', model: 'Galaxy S21', os: 'Android' },
+                { brand: 'Google', model: 'Pixel 6', os: 'Android' },
+                { brand: 'OnePlus', model: '9 Pro', os: 'Android' },
+                { brand: 'Huawei', model: 'P40 Pro', os: 'Android' },
+            ];
+
+            const callback = jest.fn();
+            arrayAlgorithm.forEach(phones, callback);
+
+            expect(callback).toHaveBeenCalledTimes(phones.length);
+
+            phones.forEach((phone, index, phones) => {
+                expect(callback).toHaveBeenCalledWith(phone, index, phones);
+            });
         });
     });
 });

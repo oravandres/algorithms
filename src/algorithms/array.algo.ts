@@ -189,7 +189,23 @@ export class ArrayAlgorithm extends BaseAlgorithm {
      *
      * Iteration methods process each element of an array in some manner, usually returning a new value or array based on the original array.
      */
-    public forEach(): void {}
+
+    /**
+     * Executes a provided callback function once for each element in the given array.
+     *
+     * @param arr - The array of type `T` to be iterated over.
+     * @param callback - A function that is executed for each element in the array.
+     *                   This function takes three parameters:
+     *                   1. The current element being processed in the array.
+     *                   2. The index of the current element being processed.
+     *                   3. The original array `arr`.
+     *
+     * This method does not return a value. Its primary use is to perform side effects
+     * for each element in the array.
+     */
+    public forEach<T>(arr: Array<T>, callback: (value: T, index: number, arr: T[]) => void): void {
+        arr.forEach(callback);
+    }
 
     public map(): void {}
 

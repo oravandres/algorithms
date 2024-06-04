@@ -243,5 +243,34 @@ describe('Array algorithms', () => {
                 expect(callback).toHaveBeenCalledWith(phone, index, phones);
             });
         });
+
+        test('map', () => {
+            type Stock = {
+                name: string;
+                ticker: string;
+                exchange: string;
+            };
+
+            const stocks: Stock[] = [
+                { name: 'Apple Inc.', ticker: 'AAPL', exchange: 'NASDAQ' },
+                { name: 'Microsoft Corporation', ticker: 'MSFT', exchange: 'NASDAQ' },
+                { name: 'Amazon.com, Inc.', ticker: 'AMZN', exchange: 'NASDAQ' },
+                { name: 'Alphabet Inc.', ticker: 'GOOGL', exchange: 'NASDAQ' },
+                { name: 'Tesla, Inc.', ticker: 'TSLA', exchange: 'NASDAQ' },
+            ];
+
+            const expectedStocks = stocks.map((stock) => ({ ...stock, name: stock.name.toUpperCase() }));
+            const callback = jest.fn((stock: Stock) => {
+                return { ...stock, name: stock.name.toUpperCase() };
+            });
+
+            const result = arrayAlgorithm.map(stocks, callback);
+            expect(result).toEqual(expectedStocks);
+
+            expect(callback).toHaveBeenCalledTimes(stocks.length);
+            stocks.map((stock, index, stocks) => {
+                expect(callback).toHaveBeenCalledWith(stock, index, stocks);
+            });
+        });
     });
 });

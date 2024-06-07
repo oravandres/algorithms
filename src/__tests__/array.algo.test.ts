@@ -259,16 +259,17 @@ describe('Array algorithms', () => {
                 { name: 'Tesla, Inc.', ticker: 'TSLA', exchange: 'NASDAQ' },
             ];
 
-            const expectedStocks = stocks.map((stock) => ({ ...stock, name: stock.name.toUpperCase() }));
-            const callback = jest.fn((stock: Stock) => {
+            const mapFn = (stock: Stock) => {
                 return { ...stock, name: stock.name.toUpperCase() };
-            });
+            };
 
-            const result = arrayAlgorithm.map(stocks, callback);
-            expect(result).toEqual(expectedStocks);
+            const callback = jest.fn(mapFn);
+            const mappedStocks = arrayAlgorithm.map(stocks, callback);
 
+            expect(mappedStocks).toEqual(stocks.map(mapFn));
             expect(callback).toHaveBeenCalledTimes(stocks.length);
-            stocks.map((stock, index, stocks) => {
+
+            stocks.forEach((stock, index, stocks) => {
                 expect(callback).toHaveBeenCalledWith(stock, index, stocks);
             });
         });

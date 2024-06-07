@@ -273,5 +273,32 @@ describe('Array algorithms', () => {
                 expect(callback).toHaveBeenCalledWith(stock, index, stocks);
             });
         });
+
+        test('filter', () => {
+            type Movie = {
+                title: string;
+                genre: string;
+                year: number;
+            };
+
+            const movies: Movie[] = [
+                { title: 'The Lord of the Rings: The Fellowship of the Ring', genre: 'Fantasy', year: 2001 },
+                { title: 'Star Wars: Episode IV - A New Hope', genre: 'Sci-Fi', year: 1977 },
+                { title: 'Harry Potter and the Philosopher\'s Stone', genre: 'Fantasy', year: 2001 },
+                { title: 'The Matrix', genre: 'Sci-Fi', year: 1999 },
+                { title: 'The Hobbit: An Unexpected Journey', genre: 'Fantasy', year: 2012 },
+            ];
+
+            const filterFn = (movie: Movie) => movie.year < 2000;
+            const expectedMovies = movies.filter(filterFn);
+
+            const callback = jest.fn(filterFn);
+            const filteredMovies = arrayAlgorithm.filter(movies, callback);
+
+            expect(filteredMovies).toEqual(expectedMovies);
+            movies.forEach((movie, index, movies) => {
+                expect(callback).toHaveBeenCalledWith(movie, index, movies);
+            });
+        });
     });
 });

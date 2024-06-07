@@ -223,7 +223,22 @@ export class ArrayAlgorithm extends BaseAlgorithm {
         return arr.map(callback);
     }
 
-    public filter(): void {}
+    /**
+     * This method creates a new array that includes elements from the original array that pass a test.
+     * The test is a callback function that is executed for each element in the array.
+     * If the callback function returns true for an element, that element is included in the new array.
+     * If the callback function returns false, the element is not included.
+     *
+     * @param arr - The original array.
+     * @param callback - The test function that is executed for each element. It takes three parameters:
+     *                   1. The current element being processed.
+     *                   2. The index of the current element.
+     *                   3. The original array.
+     * @returns A new array containing only the elements that passed the test.
+     */
+    public filter<T>(arr: Array<T>, callback: (value: T, index: number, arr: T[]) => boolean): Array<T> {
+        return arr.filter(callback);
+    }
 
     public reduce(): void {}
 

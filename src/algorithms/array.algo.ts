@@ -241,19 +241,24 @@ export class ArrayAlgorithm extends BaseAlgorithm {
     }
 
     /**
-     * Executes a provided reducer function on each element in the array, resulting in a single output value.
+     * Executes a reducer function on each element of the array, resulting in a single output value.
      * The reducer function takes four arguments:
-     * 1. Accumulator (previousValue): The accumulated value previously returned in the last invocation of the callback.
-     * 2. Current Value (currentValue): The current element being processed in the array.
-     * 3. Current Index (currentIndex): The index of the current element being processed in the array.
+     * 1. Accumulator (acc): The accumulated value previously returned in the last invocation of the callback.
+     * 2. Current Value (value): The current element being processed in the array.
+     * 3. Current Index (index): The index of the current element being processed in the array.
      * 4. Source Array (arr): The array `reduce` was called upon.
      *
      * @param arr - The array of type `T` to be reduced.
-     * @param callback - The reducer function that is executed for each element in the array.
-     * @returns The final accumulated value resulting from the reduction.
+     * @param callback - The reducer function that is executed for each element in the array. This function takes four parameters:
+     *                   1. Accumulator (acc): The accumulated value previously returned in the last invocation of the callback.
+     *                   2. Current Value (value): The current element being processed in the array.
+     *                   3. Current Index (index): The index of the current element being processed in the array.
+     *                   4. Source Array (arr): The array `reduce` was called upon.
+     * @param initValue - The initial value to be used as the first argument to the first call of the callback. The type of this argument is `U`.
+     * @returns The final accumulated value resulting from the reduction. The type of this return value is `U`.
      */
-    public reduce<T>(arr: Array<T>, callback: (previousValue: T, currentValue: T, currentIndex: number, arr: Array<T>) => T): T {
-        return arr.reduce(callback);
+    public reduce<T, U>(arr: Array<T>, callback: (acc: U, value: T, index: number, arr: Array<T>) => U, initValue: U): U {
+        return arr.reduce(callback, initValue);
     }
 
     public reduceRight(): void {}

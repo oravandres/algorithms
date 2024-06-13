@@ -284,7 +284,7 @@ describe('Array algorithms', () => {
             const movies: Movie[] = [
                 { title: 'The Lord of the Rings: The Fellowship of the Ring', genre: 'Fantasy', year: 2001 },
                 { title: 'Star Wars: Episode IV - A New Hope', genre: 'Sci-Fi', year: 1977 },
-                { title: 'Harry Potter and the Philosopher\'s Stone', genre: 'Fantasy', year: 2001 },
+                { title: "Harry Potter and the Philosopher's Stone", genre: 'Fantasy', year: 2001 },
                 { title: 'The Matrix', genre: 'Sci-Fi', year: 1999 },
                 { title: 'The Hobbit: An Unexpected Journey', genre: 'Fantasy', year: 2012 },
             ];
@@ -298,6 +298,49 @@ describe('Array algorithms', () => {
             expect(filteredMovies).toEqual(expectedMovies);
             movies.forEach((movie, index, movies) => {
                 expect(callback).toHaveBeenCalledWith(movie, index, movies);
+            });
+        });
+
+        describe('reduce', () => {
+            test('calculates the total price of all products in a shopping cart', () => {
+                type Product = {
+                    name: string;
+                    price: number;
+                };
+
+                const products: Product[] = [
+                    { name: 'Laptop', price: 1000 },
+                    { name: 'Smartphone', price: 500 },
+                    { name: 'Headphones', price: 100 },
+                ];
+
+                const expectedTotalPrice = 1600;
+                const totalPrice = arrayAlgorithm.reduce(products, (total, product) => total + product.price, 0);
+
+                expect(totalPrice).toEqual(expectedTotalPrice);
+            });
+
+            test('creates a sentence from an array of words', () => {
+                const expectedSentence = 'Waste no more time arguing what a good man should be. Be one.';
+                const words = expectedSentence.split(' ');
+                const sentence = arrayAlgorithm.reduce(words, (sentence, word) => `${sentence} ${word}`, '');
+
+                expect(sentence.trim()).toEqual(expectedSentence);
+            });
+
+            test('counts the frequency of numbers in an array', () => {
+                const numbers = [1, 2, 2, 3, 3, 3, 4, 4, 4, 4];
+                const expectedFrequency = { '1': 1, '2': 2, '3': 3, '4': 4 };
+                const frequency = arrayAlgorithm.reduce(
+                    numbers,
+                    (freq: Record<number, number>, num: number) => {
+                        freq[num] = (freq[num] || 0) + 1;
+                        return freq;
+                    },
+                    {} as Record<number, number>,
+                );
+
+                expect(frequency).toEqual(expectedFrequency);
             });
         });
     });

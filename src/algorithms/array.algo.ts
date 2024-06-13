@@ -240,7 +240,21 @@ export class ArrayAlgorithm extends BaseAlgorithm {
         return arr.filter(callback);
     }
 
-    public reduce(): void {}
+    /**
+     * Executes a provided reducer function on each element in the array, resulting in a single output value.
+     * The reducer function takes four arguments:
+     * 1. Accumulator (previousValue): The accumulated value previously returned in the last invocation of the callback.
+     * 2. Current Value (currentValue): The current element being processed in the array.
+     * 3. Current Index (currentIndex): The index of the current element being processed in the array.
+     * 4. Source Array (arr): The array `reduce` was called upon.
+     *
+     * @param arr - The array of type `T` to be reduced.
+     * @param callback - The reducer function that is executed for each element in the array.
+     * @returns The final accumulated value resulting from the reduction.
+     */
+    public reduce<T>(arr: Array<T>, callback: (previousValue: T, currentValue: T, currentIndex: number, arr: Array<T>) => T): T {
+        return arr.reduce(callback);
+    }
 
     public reduceRight(): void {}
 

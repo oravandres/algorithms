@@ -282,7 +282,20 @@ export class ArrayAlgorithm extends BaseAlgorithm {
         return arr.reduceRight(callback, initValue);
     }
 
-    public some(): void {}
+    /**
+     * The `some` method tests whether at least one element in the array passes the test implemented by the provided callback function.
+     *
+     * @param arr - The array of type `T` to be tested.
+     * @param callback - A function that is executed for each element in the array. This function takes three parameters:
+     *                   1. `value`: The current element being processed in the array.
+     *                   2. `index`: The index of the current element being processed.
+     *                   3. `arr`: The original array `some` was called upon.
+     *                   The function should return a boolean value.
+     * @returns A boolean value: `true` if the callback function returns a truthy value for at least one element in the array; otherwise, `false`.
+     */
+    public some<T>(arr: Array<T>, callback: (value: T, index: number, arr: Array<T>) => boolean): boolean {
+        return arr.some(callback);
+    }
 
     public every(): void {}
 

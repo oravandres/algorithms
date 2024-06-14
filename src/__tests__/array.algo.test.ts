@@ -376,5 +376,35 @@ describe('Array algorithms', () => {
                 expect(sentence.trim()).toEqual(expectedSentence);
             });
         });
+
+        describe('some', () => {
+            test('returns true when at least one element passes the test', () => {
+                const numbers = [0, 1, 2, 3, 4];
+                const callback = jest.fn((num: number) => num > 3);
+
+                const result = arrayAlgorithm.some(numbers, callback);
+                expect(result).toEqual(true);
+
+                expect(callback).toHaveBeenCalledTimes(numbers.length);
+
+                numbers.forEach((num, index, arr) => {
+                    expect(callback).toHaveBeenCalledWith(num, index, arr);
+                });
+            });
+
+            test('returns false when no elements pass the test', () => {
+                const numbers = [0, 1, 2, 3];
+                const callback = jest.fn((num: number) => num > 3);
+
+                const result = arrayAlgorithm.some(numbers, callback);
+                expect(result).toEqual(false);
+
+                expect(callback).toHaveBeenCalledTimes(numbers.length);
+
+                numbers.forEach((num, index, arr) => {
+                    expect(callback).toHaveBeenCalledWith(num, index, arr);
+                });
+            });
+        });
     });
 });

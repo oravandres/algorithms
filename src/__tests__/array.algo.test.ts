@@ -406,5 +406,45 @@ describe('Array algorithms', () => {
                 });
             });
         });
+
+        describe('every', () => {
+            test('returns true when all elements pass the test', () => {
+                type Product = {
+                    name: string;
+                    type: string;
+                };
+
+                const phones: Product[] = [
+                    { name: 'IPhone 11', type: 'phone' },
+                    { name: 'Samsung Galaxy S24', type: 'phone' },
+                    { name: 'IPhone 14', type: 'phone' },
+                ];
+
+                const callback = jest.fn((product: Product) => product.type === 'phone');
+
+                const result = arrayAlgorithm.every(phones, callback);
+                expect(result).toEqual(true);
+
+                expect(callback).toHaveBeenCalledTimes(phones.length);
+
+                phones.forEach((num, index, arr) => {
+                    expect(callback).toHaveBeenCalledWith(num, index, arr);
+                });
+            });
+
+            test('returns false when one of the elements do not pass the test', () => {
+                const words = ['apple', 'grape', 'lemon', 'melon', 'berry', 'peach', 'blueberry'];
+                const callback = jest.fn((word: string) => word.length === 5);
+
+                const result = arrayAlgorithm.every(words, callback);
+                expect(result).toEqual(false);
+
+                expect(callback).toHaveBeenCalledTimes(words.length);
+
+                words.forEach((num, index, arr) => {
+                    expect(callback).toHaveBeenCalledWith(num, index, arr);
+                });
+            });
+        });
     });
 });

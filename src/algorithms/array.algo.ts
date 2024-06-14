@@ -297,7 +297,20 @@ export class ArrayAlgorithm extends BaseAlgorithm {
         return arr.some(callback);
     }
 
-    public every(): void {}
+    /**
+     * The `every` method tests whether all elements in the array pass the test implemented by the provided callback function.
+     *
+     * @param arr - The array of type `T` to be tested.
+     * @param callback - A function that is executed for each element in the array. This function takes three parameters:
+     *                   1. `value`: The current element being processed in the array.
+     *                   2. `index`: The index of the current element being processed.
+     *                   3. `arr`: The original array `every` was called upon.
+     *                   The function should return a boolean value.
+     * @returns A boolean value: `true` if the callback function returns a truthy value for all elements in the array; otherwise, `false`.
+     */
+    public every<T>(arr: Array<T>, callback: (value: T, index: number, arr: Array<T>) => boolean): boolean {
+        return arr.every(callback);
+    }
 
     public find(): void {}
 

@@ -343,5 +343,38 @@ describe('Array algorithms', () => {
                 expect(frequency).toEqual(expectedFrequency);
             });
         });
+
+        describe('reduceRight', () => {
+            test('calculates the total weight of all items in a backpack in reverse', () => {
+                type Item = {
+                    name: string;
+                    weight: number;
+                };
+
+                const items: Item[] = [
+                    { name: 'Water Bottle', weight: 1 },
+                    { name: 'Tent', weight: 2.5 },
+                    { name: 'Sleeping Bag', weight: 1.5 },
+                ];
+
+                const expectedTotalWeight = 5;
+                const mockCallback = jest.fn((total, item) => total + item.weight);
+
+                const totalWeight = arrayAlgorithm.reduceRight(items, mockCallback, 0);
+                expect(totalWeight).toEqual(expectedTotalWeight);
+
+                for (let i = 0; i < items.length; i++) {
+                    expect(mockCallback.mock.calls[i][1]).toEqual(items[items.length - 1 - i]);
+                }
+            });
+
+            test('creates a sentence from an array of words in reverse order', () => {
+                const expectedSentence = 'Small ideas can change the world.';
+                const words = expectedSentence.split(' ').reverse();
+                const sentence = arrayAlgorithm.reduceRight(words, (sentence, word) => `${sentence} ${word}`, '');
+
+                expect(sentence.trim()).toEqual(expectedSentence);
+            });
+        });
     });
 });

@@ -446,5 +446,43 @@ describe('Array algorithms', () => {
                 });
             });
         });
+
+        describe('find', () => {
+            test('return the first element that passes the test', () => {
+                type File = {
+                    name: string;
+                    type: string;
+                };
+
+                const videoFile = { name: 'france_2008_002.mov', type: 'video' };
+                const files: File[] = [
+                    { name: 'france_2008_001.jpg', type: 'image' },
+                    { name: 'france_2008_002.jpg', type: 'image' },
+                    videoFile,
+                    { name: 'france_2008_003.jpg', type: 'image' },
+                    { name: 'france_2008_003.mov', type: 'video' },
+                ];
+
+                const callback = jest.fn((file: File) => file.type === 'video');
+                const video = arrayAlgorithm.find(files, callback);
+
+                expect(video).toEqual(videoFile);
+                expect(callback).toHaveBeenCalledTimes(files.length - 2);
+            });
+
+            test('returns undefined if the element was not found', () => {
+                const numbers = [-1, -2, -3, -4];
+                const callback = jest.fn((num: number) => num > 0);
+
+                const res = arrayAlgorithm.find(numbers, callback);
+                expect(res).toEqual(undefined);
+
+                expect(callback).toHaveBeenCalledTimes(numbers.length);
+
+                numbers.forEach((num: number, index: number, numbers) => {
+                    expect(callback).toHaveBeenCalledWith(num, index, numbers);
+                });
+            });
+        });
     });
 });

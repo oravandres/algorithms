@@ -283,7 +283,7 @@ export class ArrayAlgorithm extends BaseAlgorithm {
     }
 
     /**
-     * The `some` method tests whether at least one element in the array passes the test implemented by the provided callback function.
+     * Tests whether at least one element in the array passes the test implemented by the provided callback function.
      *
      * @param arr - The array of type `T` to be tested.
      * @param callback - A function that is executed for each element in the array. This function takes three parameters:
@@ -298,7 +298,7 @@ export class ArrayAlgorithm extends BaseAlgorithm {
     }
 
     /**
-     * The `every` method tests whether all elements in the array pass the test implemented by the provided callback function.
+     * Tests whether all elements in the array pass the test implemented by the provided callback function.
      *
      * @param arr - The array of type `T` to be tested.
      * @param callback - A function that is executed for each element in the array. This function takes three parameters:
@@ -312,7 +312,20 @@ export class ArrayAlgorithm extends BaseAlgorithm {
         return arr.every(callback);
     }
 
-    public find(): void {}
+    /**
+     * Returns the first element in the array that satisfies the provided testing function.
+     *
+     * @param arr - The array of type `T` to be searched.
+     * @param callback - A function that is executed for each element in the array until it finds one where it returns a truthy value. It takes three parameters:
+     *                   1. `value`: The current element being processed in the array.
+     *                   2. `index`: The index of the current element being processed.
+     *                   3. `arr`: The original array `find` was called upon.
+     *                   The function should return a boolean value.
+     * @returns The first element in the array that satisfies the provided testing function. If no values satisfy the testing function, `undefined` is returned.
+     */
+    public find<T>(arr: Array<T>, callback: (value: T, index: number, arr: Array<T>) => boolean): T | undefined {
+        return arr.find(callback);
+    }
 
     public findIndex(): void {}
 }

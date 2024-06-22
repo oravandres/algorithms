@@ -650,5 +650,23 @@ describe('Array algorithms', () => {
                 [2, planets[2]],
             ]);
         });
+
+        test('keys', () => {
+            type Album = {
+                title: string;
+                artist: string;
+                year: number;
+            };
+
+            const albums: Album[] = [
+                { title: 'The Dark Side of the Moon', artist: 'Pink Floyd', year: 1973 },
+                { title: 'Abbey Road', artist: 'The Beatles', year: 1969 },
+                { title: 'Thriller', artist: 'Michael Jackson', year: 1982 },
+            ];
+
+            const keys = arrayAlgorithm.keys(albums);
+
+            expect([...keys]).toEqual([0, 1, 2]);
+        });
     });
 });

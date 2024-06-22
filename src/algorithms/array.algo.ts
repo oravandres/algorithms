@@ -359,7 +359,18 @@ export class ArrayAlgorithm extends BaseAlgorithm {
         return arr.copyWithin(target, start, end);
     }
 
-    public fill(): void {}
+    /**
+     * Fills a portion of an array with a static value, from the start index up to, but not including, the end index.
+     *
+     * @param arr - The array of type `T` to be filled.
+     * @param value - The value to fill the array with.
+     * @param start - The index to start filling at. If negative, it is treated as `arr.length + start`. Default is 0.
+     * @param end - The index to stop filling at. If negative, it is treated as `arr.length + end`. Default is `arr.length`.
+     * @returns The modified array with the specified portion filled with the given value.
+     */
+    public fill<T>(arr: Array<T>, value: T, start?: number, end?: number): Array<T> {
+        return arr.fill(value, start, end);
+    }
 
     public entries(): void {}
 

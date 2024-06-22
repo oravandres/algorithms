@@ -557,5 +557,77 @@ describe('Array algorithms', () => {
                 expect(copiedNumbers).toEqual([1, 2, 3, 3, 4]);
             });
         });
+
+        describe('fill', () => {
+            test('fills all elements in an array with a static value', () => {
+                type Album = {
+                    title: string;
+                    artist: string;
+                    year: number;
+                };
+
+                const albums: Album[] = [
+                    { title: 'The Dark Side of the Moon', artist: 'Pink Floyd', year: 1973 },
+                    { title: 'Abbey Road', artist: 'The Beatles', year: 1969 },
+                    { title: 'Thriller', artist: 'Michael Jackson', year: 1982 },
+                ];
+
+                const newAlbum: Album = { title: 'New Album', artist: 'New Artist', year: 2025 };
+                const filledAlbums = arrayAlgorithm.fill(albums, newAlbum);
+
+                expect(filledAlbums).toEqual([newAlbum, newAlbum, newAlbum]);
+            });
+
+            test('fills a portion of an array with a static value', () => {
+                type Book = {
+                    title: string;
+                    author: string;
+                    year: number;
+                };
+
+                const books: Book[] = [
+                    { title: 'To Kill a Mockingbird', author: 'Harper Lee', year: 1960 },
+                    { title: '1984', author: 'George Orwell', year: 1949 },
+                    { title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', year: 1925 },
+                ];
+
+                const newBook: Book = { title: 'New Book', author: 'New Author', year: 2025 };
+                const filledBooks = arrayAlgorithm.fill(books, newBook, 1, 2);
+
+                expect(filledBooks).toEqual([books[0], newBook, books[2]]);
+            });
+
+            test('handles negative indices correctly', () => {
+                type Element = {
+                    name: string;
+                    symbol: string;
+                    atomicNumber: number;
+                };
+
+                const elements: Element[] = [
+                    { name: 'Hydrogen', symbol: 'H', atomicNumber: 1 },
+                    { name: 'Helium', symbol: 'He', atomicNumber: 2 },
+                    { name: 'Lithium', symbol: 'Li', atomicNumber: 3 },
+                ];
+
+                const newElement: Element = { name: 'New Element', symbol: 'Ne', atomicNumber: 0 };
+                const filledElements = arrayAlgorithm.fill(elements, newElement, -1);
+
+                expect(filledElements).toEqual([elements[0], elements[1], newElement]);
+            });
+
+            test('populates an empty array', () => {
+                type Planet = {
+                    name: string;
+                    order: number;
+                };
+
+                const planets: Planet[] = new Array(3);
+                const newPlanet: Planet = { name: 'New Planet', order: 0 };
+                const filledPlanets = arrayAlgorithm.fill(planets, newPlanet);
+
+                expect(filledPlanets).toEqual([newPlanet, newPlanet, newPlanet]);
+            });
+        });
     });
 });

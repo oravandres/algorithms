@@ -484,5 +484,43 @@ describe('Array algorithms', () => {
                 });
             });
         });
+
+        describe('findIndex', () => {
+            test('return the index of the first element that passes the test', () => {
+                type Book = {
+                    title: string;
+                    genre: string;
+                };
+
+                const targetBook = { title: 'The Hobbit', genre: 'Fantasy' };
+                const books: Book[] = [
+                    { title: '1984', genre: 'Dystopian' },
+                    { title: 'To Kill a Mockingbird', genre: 'Southern Gothic' },
+                    { title: 'Pride and Prejudice', genre: 'Romance' },
+                    targetBook,
+                    { title: 'Moby-Dick', genre: 'Adventure' },
+                ];
+
+                const callback = jest.fn((book: Book) => book.genre === 'Fantasy');
+                const index = arrayAlgorithm.findIndex(books, callback);
+
+                expect(index).toEqual(3);
+                expect(callback).toHaveBeenCalledTimes(4);
+            });
+
+            test('returns -1 if the element was not found', () => {
+                const numbers = [-1, -2, -3, -4];
+                const callback = jest.fn((num: number) => num > 0);
+
+                const index = arrayAlgorithm.findIndex(numbers, callback);
+                expect(index).toEqual(-1);
+
+                expect(callback).toHaveBeenCalledTimes(numbers.length);
+
+                numbers.forEach((num: number, index: number, numbers) => {
+                    expect(callback).toHaveBeenCalledWith(num, index, numbers);
+                });
+            });
+        });
     });
 });

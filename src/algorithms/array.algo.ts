@@ -327,5 +327,36 @@ export class ArrayAlgorithm extends BaseAlgorithm {
         return arr.find(callback);
     }
 
-    public findIndex(): void {}
+    /**
+     * Returns the index of the first element in the array that satisfies the provided testing function.
+     *
+     * @param arr - The array of type `T` to be searched.
+     * @param callback - A function that is executed for each element in the array until it finds one where it returns a truthy value. It takes three parameters:
+     *                   1. `value`: The current element being processed in the array.
+     *                   2. `index`: The index of the current element being processed.
+     *                   3. `arr`: The original array `findIndex` was called upon.
+     *                   The function should return a boolean value.
+     * @returns The index of the first element in the array that satisfies the provided testing function. If no values satisfy the testing function, -1 is returned.
+     */
+    public findIndex<T>(arr: Array<T>, callback: (value: T, index: number, arr: Array<T>) => boolean): number {
+        return arr.findIndex(callback);
+    }
+
+    /**
+     * Other Methods
+     */
+
+    public copyWithin(): void {}
+
+    public fill(): void {}
+
+    public entries(): void {}
+
+    public keys(): void {}
+
+    public values(): void {}
+
+    public from(): void {}
+
+    public of(): void {}
 }

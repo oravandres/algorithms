@@ -668,5 +668,22 @@ describe('Array algorithms', () => {
 
             expect([...keys]).toEqual([0, 1, 2]);
         });
+
+        test('values', () => {
+            type Country = {
+                name: string;
+                population: number;
+            };
+
+            const countries: Country[] = [
+                { name: 'China', population: 1393000000 },
+                { name: 'India', population: 1366000000 },
+                { name: 'United States', population: 331000000 },
+            ];
+
+            const values = arrayAlgorithm.values(countries);
+
+            expect([...values]).toEqual([countries[0], countries[1], countries[2]]);
+        });
     });
 });

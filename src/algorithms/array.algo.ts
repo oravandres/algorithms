@@ -393,7 +393,15 @@ export class ArrayAlgorithm extends BaseAlgorithm {
         return arr.keys();
     }
 
-    public values(): void {}
+    /**
+     * Returns a new Array Iterator object that contains the values for each index in the array.
+     *
+     * @param arr - The array of type `T` to create an iterator from.
+     * @returns An iterable iterator that produces the values for each entry in the array.
+     */
+    public values<T>(arr: Array<T>): IterableIterator<T> {
+        return arr.values();
+    }
 
     public from(): void {}
 

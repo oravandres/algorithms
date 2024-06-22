@@ -346,7 +346,18 @@ export class ArrayAlgorithm extends BaseAlgorithm {
      * Other Methods
      */
 
-    public copyWithin(): void {}
+    /**
+     * Shallow copies part of an array to another location in the same array and returns it, without modifying its size.
+     *
+     * @param arr - The array of type `T` to be modified.
+     * @param target - The index at which to copy the sequence to. If negative, it is treated as `arr.length + target`.
+     * @param start - The index at which to start copying elements from. If negative, it is treated as `arr.length + start`. Default is 0.
+     * @param end - The index at which to end copying elements from. If negative, it is treated as `arr.length + end`. Default is `arr.length`.
+     * @returns The modified array with the copied elements.
+     */
+    public copyWithin<T>(arr: Array<T>, target: number, start: number = 0, end?: number): Array<T> {
+        return arr.copyWithin(target, start, end);
+    }
 
     public fill(): void {}
 

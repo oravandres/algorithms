@@ -523,4 +523,39 @@ describe('Array algorithms', () => {
             });
         });
     });
+
+    /**
+     * Other Methods
+     */
+    describe('Other Methods', () => {
+        describe('copyWithin', () => {
+            test('moves all elements to the right by 2 positions', () => {
+                const numbers = [1, 2, 3, 4, 5];
+                const copiedNumbers = arrayAlgorithm.copyWithin(numbers, 2);
+
+                expect(copiedNumbers).toEqual([1, 2, 1, 2, 3]);
+            });
+
+            test('copies last two elements to the beginning of the array', () => {
+                const numbers = [1, 2, 3, 4, 5];
+                const copiedNumbers = arrayAlgorithm.copyWithin(numbers, 0, 3);
+
+                expect(copiedNumbers).toEqual([4, 5, 3, 4, 5]);
+            });
+
+            test('copies the fourth element to the beginning of the array', () => {
+                const numbers = [1, 2, 3, 4, 5];
+                const copiedNumbers = arrayAlgorithm.copyWithin(numbers, 0, 3, 4);
+
+                expect(copiedNumbers).toEqual([4, 2, 3, 4, 5]);
+            });
+
+            test('copies the third and second elements from the end of the array to the second element from the end', () => {
+                const numbers = [1, 2, 3, 4, 5];
+                const copiedNumbers = arrayAlgorithm.copyWithin(numbers, -2, -3, -1);
+
+                expect(copiedNumbers).toEqual([1, 2, 3, 3, 4]);
+            });
+        });
+    });
 });

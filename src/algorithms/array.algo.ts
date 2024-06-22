@@ -372,7 +372,16 @@ export class ArrayAlgorithm extends BaseAlgorithm {
         return arr.fill(value, start, end);
     }
 
-    public entries(): void {}
+    /**
+     * Returns a new Array Iterator object that contains the key/value pairs for each index in the array.
+     * Each entry's key is its index, and each entry's value is the element at that index.
+     *
+     * @param arr - The array of type `T` to create an iterator from.
+     * @returns An iterable iterator that produces an array of `[index, value]` pairs for each entry in the array.
+     */
+    public entries<T>(arr: Array<T>): IterableIterator<[number, T]> {
+        return arr.entries();
+    }
 
     public keys(): void {}
 

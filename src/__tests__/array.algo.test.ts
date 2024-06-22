@@ -629,5 +629,26 @@ describe('Array algorithms', () => {
                 expect(filledPlanets).toEqual([newPlanet, newPlanet, newPlanet]);
             });
         });
+
+        test('entries', () => {
+            type Planet = {
+                name: string;
+                order: number;
+            };
+
+            const planets: Planet[] = [
+                { name: 'Mercury', order: 1 },
+                { name: 'Venus', order: 2 },
+                { name: 'Earth', order: 3 },
+            ];
+
+            const entries = arrayAlgorithm.entries(planets);
+
+            expect([...entries]).toEqual([
+                [0, planets[0]],
+                [1, planets[1]],
+                [2, planets[2]],
+            ]);
+        });
     });
 });

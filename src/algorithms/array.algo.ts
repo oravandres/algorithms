@@ -403,7 +403,15 @@ export class ArrayAlgorithm extends BaseAlgorithm {
         return arr.values();
     }
 
-    public from(): void {}
+    /**
+     * Creates a new array instance from an array-like or iterable object.
+     *
+     * @param arrayLike - An array-like or iterable object to convert to an array.
+     * @returns A new array instance.
+     */
+    public from<T>(arrayLike: ArrayLike<T> | Iterable<T>): Array<T> {
+        return Array.from(arrayLike);
+    }
 
     public of(): void {}
 }

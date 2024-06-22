@@ -685,5 +685,28 @@ describe('Array algorithms', () => {
 
             expect([...values]).toEqual([countries[0], countries[1], countries[2]]);
         });
+
+        describe('from', () => {
+            test('creates a new array from an array-like object', () => {
+                const arrayLike = { length: 3, 0: 'a', 1: 'b', 2: 'c' };
+                const newArray = arrayAlgorithm.from(arrayLike);
+
+                expect(newArray).toEqual(['a', 'b', 'c']);
+            });
+
+            test('creates a new array from an iterable object', () => {
+                const iterable = new Set(['a', 'b', 'c']);
+                const newArray = arrayAlgorithm.from(iterable);
+
+                expect(newArray).toEqual(['a', 'b', 'c']);
+            });
+
+            test('creates a new array from a string', () => {
+                const string = 'abc';
+                const newArray = arrayAlgorithm.from(string);
+
+                expect(newArray).toEqual(['a', 'b', 'c']);
+            });
+        });
     });
 });

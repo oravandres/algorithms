@@ -708,5 +708,20 @@ describe('Array algorithms', () => {
                 expect(newArray).toEqual(['a', 'b', 'c']);
             });
         });
+
+        test('of', () => {
+            type Flower = {
+                name: string;
+                color: string;
+            };
+
+            const rose: Flower = { name: 'Rose', color: 'Red' };
+            const sunflower: Flower = { name: 'Sunflower', color: 'Yellow' };
+            const tulip: Flower = { name: 'Tulip', color: 'Pink' };
+
+            const newArray = arrayAlgorithm.of(rose, sunflower, tulip);
+
+            expect(newArray).toEqual([rose, sunflower, tulip]);
+        });
     });
 });

@@ -413,5 +413,13 @@ export class ArrayAlgorithm extends BaseAlgorithm {
         return Array.from(arrayLike);
     }
 
-    public of(): void {}
+    /**
+     * Creates a new array instance with a variable number of elements.
+     *
+     * @param elements - Elements of which a new array will be created.
+     * @returns A new array instance.
+     */
+    public of<T>(...elements: T[]): Array<T> {
+        return Array.of(...elements);
+    }
 }

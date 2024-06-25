@@ -15,8 +15,9 @@ export abstract class BaseAlgorithm {
     }
 
     private testExistsForMethod(method: string): boolean {
-        const className = this.constructor.name.replace('Algorithm', '').toLowerCase();
-        const testFilePath = path.join(__dirname, `../../src/__tests__/${className}.algo.test.ts`);
+        const className = this.constructor.name.replace('Algorithm', '');
+        const camelCaseClassName = className.charAt(0).toLowerCase() + className.slice(1);
+        const testFilePath = path.join(__dirname, `../../src/__tests__/${camelCaseClassName}.algo.test.ts`);
 
         if (!fs.existsSync(testFilePath)) {
             return false;

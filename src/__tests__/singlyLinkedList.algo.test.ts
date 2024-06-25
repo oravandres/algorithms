@@ -1,10 +1,10 @@
-import { SinglyLinkedList } from '../algorithms/singlyLinkedList.algo';
+import { SinglyLinkedListAlgorithm } from '../algorithms/singlyLinkedList.algo';
 
 describe('SinglyLinkedList', () => {
-    let list: SinglyLinkedList<number>;
+    let list: SinglyLinkedListAlgorithm<number>;
 
     beforeEach(() => {
-        list = new SinglyLinkedList<number>();
+        list = new SinglyLinkedListAlgorithm<number>();
     });
 
     test('insertAtBeginning', () => {

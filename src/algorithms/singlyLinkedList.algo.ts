@@ -19,7 +19,7 @@ class ListNode<T> {
  * delete from beginning, delete from end, delete a specific node, search for a value, traverse the list,
  * get the size of the list, and get the head of the list.
  */
-export class SinglyLinkedList<T> extends BaseAlgorithm {
+export class SinglyLinkedListAlgorithm<T> extends BaseAlgorithm {
     private head: ListNode<T> | null = null;
     private size: number = 0;
 

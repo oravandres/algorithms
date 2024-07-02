@@ -7,19 +7,19 @@ describe('SkipList', () => {
         list = new SkipListAlgorithm<string>();
     });
 
-    test('insert()', () => {
+    test('insert', () => {
         list.insert('978-3-16-148410-0');
         expect(list.getSize()).toBe(1);
     });
 
-    test('search()', () => {
+    test('search', () => {
         list.insert('978-3-16-148410-0');
         const foundNode = list.search('978-3-16-148410-0');
 
         expect(foundNode?.value).toBe('978-3-16-148410-0');
     });
 
-    test('delete()', () => {
+    test('delete', () => {
         list.insert('978-3-16-148410-0');
         const result = list.delete('978-3-16-148410-0');
 
@@ -27,14 +27,14 @@ describe('SkipList', () => {
         expect(list.getSize()).toBe(0);
     });
 
-    test('getSize()', () => {
+    test('getSize', () => {
         expect(list.getSize()).toBe(0);
 
         list.insert('978-3-16-148410-0');
         expect(list.getSize()).toBe(1);
     });
 
-    test('insert()', () => {
+    test('insert', () => {
         list.insert('978-3-16-148410-0');
         list.insert('978-1-4028-9462-6');
 
